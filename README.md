@@ -36,13 +36,15 @@ not because this is easier than you might think.
 
 Create a file named `~/.girlfriend/config.rb` and open it in your favorite text editor:
 
-	Girlfriend.configure do |config|
-		config.name = 'Valeria'
-		config.age = 23
-		config.hometown = 'Moscow, Russia'
-		config.school = 'Russian Academy of Economics'
-		config.hobbies = ['gaming','travelling','photography']
-	end
+```ruby
+Girlfriend.configure do |config|
+	config.name = 'Valeria'
+	config.age = 23
+	config.hometown = 'Moscow, Russia'
+	config.school = 'Russian Academy of Economics'
+	config.hobbies = ['gaming','travelling','photography']
+end
+```
 
 Be sure to `finger` her afterwards to see the results via `girlfriend --ability finger` .
 
@@ -52,25 +54,27 @@ all her abilities via `girlfriend --abilities`.
 Adding her a new ability is just as easy as configuring her and can be done by dropping a new
 file let's say `~/.girlfriend/eat.rb`:
 
-	module Girlfriend                                                                                                         
-		module Ability
-			class Eat < Base
-				def eat(input)
-					if input =~ /pizza/i
-						'I love pizza!'
-					elif input =~ /banana/i
-						'Uh-oh, yummy!!! Hehe!'
-					else
-						'Dude, I don\'t like that! Yuck!'
-					end
+```ruby
+module Girlfriend                                                                                                         
+	module Ability
+		class Eat < Base
+			def eat(input)
+				if input =~ /pizza/i
+					'I love pizza!'
+				elif input =~ /banana/i
+					'Uh-oh, yummy!!! Hehe!'
+				else
+					'Dude, I don\'t like that! Yuck!'
 				end
 			end
 		end
 	end
-	
-	Girlfriend.register_ability :eat do |girl|
-		Girlfriend::Ability::Eat.new(girl)
-	end
+end
+
+Girlfriend.register_ability :eat do |girl|
+	Girlfriend::Ability::Eat.new(girl)
+end
+```
 
 Be sure to check out her list of abilities `girlfriend --abilities` in order to confirm 
 that she acknowledged her new ability.
