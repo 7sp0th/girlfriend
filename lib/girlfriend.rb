@@ -7,6 +7,7 @@ require 'girlfriend/version'
 require 'girlfriend/ability/base'
 require 'girlfriend/ability/finger'
 require 'girlfriend/ability/talk'
+require 'girlfriend/ability/cook'
 
 module Girlfriend
 	class GirlfriendError < StandardError; end
@@ -123,4 +124,8 @@ end
 
 Girlfriend.register_ability :talk do |girl|
 	Girlfriend::Ability::Talk.new(girl)
+end
+
+Girlfriend.register_ability :cook do |girl|
+	Girlfriend::Ability::Cook.new(girl)
 end
